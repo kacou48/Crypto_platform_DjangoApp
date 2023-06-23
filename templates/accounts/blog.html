@@ -1,0 +1,556 @@
+{% extends 'core/base.html' %}
+
+{% block head_title %}chira-blog{% endblock %}
+
+{% block head_extra %}
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+{% endblock %}
+
+
+
+{% block content %}
+<div class="jumbotron text-center h3 mt-5" style="text-transform: none;">
+  <h1>Notre page Blog</h1>
+  <p>Comment échanger vos cryptos sur “chyracrypto” ?</p>
+</div>
+
+<div class="container h5" style="text-transform: none;">
+  <div class="row" style="margin-top:2rem;">
+    <div class="col-sm-4">
+      <h3>Premier part</h3>
+      <p>Choisissez votre crypto dans la liste des centaines de cryptos disponibles</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Deuxieme part</h3>
+      <p>Effectuez votre transaction. Confirmez les détails de vos informations et envoyez vos cryptos à 
+      échanger à l’adresse générée</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Troixieme part</h3>
+      <p>Recevez vos cryptos échangés dans votre wallet ( au meilleur taux).</p>
+    </div>
+  </div>
+
+  <div class="col-sm-12">
+  	<h3>Quelle est la différence entre les taux fixes et taux 
+     variables ?</h3>
+     <p>Pendant le flux standard, toute transaction a son propre taux de change unique. En raison de la 
+     nature volatile du marché des crypto-monnaies, des frais de réseau en constante évolution, les 
+     taux variable peuvent changer à tout moment. En conséquence, vous pourriez recevoir plus ou 
+     moins que vous ne le pensiez.</p><br>
+
+     <p>Un taux de change fixe est un taux qui correspond totalement au montant affiché à l'utilisateur au 
+     début de l'échange, indépendamment de la volatilité ultérieure du taux. En raison de la nature 
+     volatile de la cryptographie, la mise en œuvre de taux fixes peut être très risquée pour l'échange.</p><br>
+
+     <p>Le site Web de Chiracrypto.com et l'application mobile de Chiracrypto offrent aux utilisateurs un 
+     moyen d'éviter le risque de taux de change pendant l'intervalle de transaction</p>
+  </div>
+
+  <p>
+    <h1>GLOSSAIRE CRYPTOS</h1>
+    <h4>51 % d'attaque (51% Attack)</h4>
+Une attaque à 51 % est un scénario hypothétique dans lequel plus de 50 % des nœuds d'un réseau 
+blockchain tombent sous le contrôle d'un seul groupe. Dans une telle circonstance, le consensus d'un 
+réseau n'est plus suffisamment distribué pour être viable, laissant la blockchain ouverte à la 
+manipulation. Les attaquants ayant plus de 50 % de contrôle sur un réseau seraient en mesure 
+d'arrêter, d'inverser et de dupliquer de nouvelles transactions, une condition catastrophique pour toute 
+blockchain. Notamment, une attaque à 51 % devient plus difficile et coûteuse à mesure qu'un réseau 
+devient plus important, distribué et précieux. <br>
+<h4>Aave (Aave)</h4>
+Aave est une plateforme décentralisée de prêt et d'emprunt sur Ethereum. Les utilisateurs d'Aave 
+peuvent contracter des prêts en fournissant des garanties sous la forme d'actifs cryptographiques. Les 
+prêteurs qui à Aave reçoivent des aTokens en retour, qui paient automatiquement des intérêts au 
+détenteur avec les fonds gagnés grâce aux frais de négociation de la plateforme. Aave a été le pionnier 
+de la technologie des «prêts flash», qui permettent le prêt de fonds sans garantie, tant que le principal 
+est remboursé dans le même bloc de transaction Ethereum. <br>
+
+<h4>Airdrop</h4>
+Qu'est-ce qu'un airdrop ? C'est une méthode de distribution de crypto gratuite. Se produit 
+généralement au début d'une tentative de hard fork pour attirer plus d'utilisateurs ou conserver ceux qui 
+existent déjà. <br>
+<h4>Algorithme (Algorithm)</h4>
+Séquence d'instructions bien définies qui est utilisée pour effectuer un calcul ou pour résoudre un 
+problème. <br>
+<h4>Allocation(Allocation)</h4>
+Le terme est souvent utilisé dans le cadre de la création d'un portefeuille d'investissement : il fait 
+référence au pourcentage de chaque actif qui sera détenu par un investisseur. <br>
+<h4>Altcoins (Altcoin)</h4>
+Un altcoin est une «pièce alternative», ou toute crypto-monnaie lancée après Bitcoin. Il fait référence à 
+toute crypto-monnaie qui n'est pas BTC. Par exemple, ETH, XRP et LTC sont tous des altcoins. <br>
+<h4>LAM (AML)</h4>
+Lois, réglementations et procédures anti-blanchiment d'argent visant à mettre fin aux pratiques de 
+revenus illégaux <br>
+<h4>Amortissement (Amortizing)</h4>
+L'amortissement fait référence à la répartition d'un coût initial ou de frais généraux dans le temps ou 
+entre les parties. Sur le réseau Orchid, les coûts de transaction sont maintenus bas en amortissant les 
+frais sur les transactions et les utilisateurs. Les frais de transaction sont lentement payés ou divisés en 
+incréments qui sont ensuite partagés sur un vaste réseau pour réduire les coûts des utilisateurs 
+individuels <br>
+<h4>API (API)
+</h4>
+Application Programming Interface, logiciel qui permet à deux applications d'échanger des données et 
+d'interagir entre elles.
+<h4>Arbitrage (Arbitrage)</h4>
+Une méthode pour obtenir des bénéfices en utilisant les différences de prix entre diverses bourses. Par 
+exemple, si Bitcoin coûte 9 000 $ sur un échange et 9 080 $ sur un autre, le profit d'arbitrage serait de 80 
+$ si vous achetez sur le premier et vendez sur le second. <br>
+<h4>Cendré (Ashdraked)</h4>
+Être « Ashdraked » signifie perdre tout votre argent en court-circuitant Bitcoin. Il vient du nom d'un 
+investisseur roumain qui a insisté pour court-circuiter Bitcoin et, par conséquent, a perdu tous ses 
+investissements.  <br>
+<h4>Résistant aux ASIC (ASIC-resistant)</h4>
+Une crypto-monnaie qui ne peut pas être minée par les machines ASIC.
+Demander le prix (Ask Price)
+Un prix que le vendeur est prêt à accepter pour sa crypto. <br>
+<h4>ATH (ATH)</h4>
+"Le plus haut de tous les temps". Dans le contexte des crypto-monnaies, il marque le prix maximum 
+jamais atteint par la crypto.
+<h4>Échange atomique(Atomic swap)</h4>
+Contrats d'échange automatiques qui offrent à deux parties un moyen d'échanger des jetons à partir de 
+deux chaînes de blocs différentes. <br>
+<h4>Porte arrière(Backdoor)</h4>
+Une porte dérobée fait référence à toute méthode capable de contourner les procédures 
+d'authentification et d'autorisation régulières pour obtenir un accès racine ou de haut niveau à un 
+système, un ordinateur, une application ou un réseau. Les portes dérobées sont généralement installées 
+via l'inclusion de fichiers à distance (RFI), qui identifie un composant faible dans une application ou un 
+réseau. Ce type de canal permet un contrôle direct sur un appareil infecté pour manipuler des données, 
+déployer plus de logiciels malveillants ou créer un réseau zombie d'ordinateurs infectés pour des 
+activités criminelles. <br>
+<h4>Backtesting(Backtesting)</h4>
+Le backtesting est la simulation d'une stratégie de trading basée sur des données historiques. Les traders 
+utilisent le backtesting pour prouver que leur système de trading fonctionne sur la base de résultats 
+historiques. Dans le trading et l'investissement, les performances passées ne garantissent pas les 
+résultats futurs, ce qui signifie qu'une stratégie qui fonctionne bien dans le backtesting peut ne pas 
+fonctionner aussi bien à l'avenir.
+<h4>Porte-sac(Bagholder)</h4>
+Une personne qui détient une pièce qui s'écrase ou un altcoin après qu'elle a été pompée et jetée.
+Bande passante(Bandwidth)
+Quantité maximale de données pouvant être transmises via une connexion Internet pendant une 
+période donnée.
+<h4>Ours (Bear)</h4>
+Un baissier est un trader qui mise sur la baisse de la valeur marchande. Un marché baissier est une 
+période pendant laquelle le prix de l'actif baisse,
+Piège à ours (Bear Trap)
+Une situation où le prix de l'actif baisse, incitant les baissiers à vendre leurs positions, puis recommence 
+à augmenter, les « piégeant » ainsi.
+Prix de l'offre (Bid Price)
+Un prix que l'acheteur est prêt à payer pour la crypto. En face du "prix demandé"
+Écart acheteur-vendeur (Bid-ask spread)
+Le montant par lequel le prix vendeur (prix de vente) diffère du prix acheteur (prix d'achat).
+<h4>Bitcoin</h4>
+Bitcoin est la crypto-monnaie la plus grande et la plus populaire au monde. Il s'agit d'une monnaie 
+numérique décentralisée qui permet aux utilisateurs d'effectuer des transactions peer-to-peer sans 
+confiance. 
+<h4>Distributeur automatique de bitcoins (Bitcoin ATM)
+</h4>ATM qui permet aux gens d'acheter des bitcoins à l'aide d'une carte de débit ou de crédit.
+Dominance Bitcoin (Bitcoin Dominance)
+Le rapport entre la part de marché du Bitcoin et celle des altcoins.
+Hauteur de bloc (Block height)
+Un emplacement spécifique sur la blockchain qui est mesuré par le nombre de blocs confirmés et vérifiés 
+qui le précèdent.
+Bloc de récompense (Block reward)
+Le nombre de pièces ou de jetons que vous pouvez obtenir si vous parvenez à extraire avec succès un 
+bloc d'une crypto-monnaie.
+<h4>Chaîne de blocs (Blockchain)</h4>
+La technologie derrière la crypto , c'est une base de données publique protégée par cryptologie, qui ne 
+peut être mise à jour que par ses propriétaires.
+<h4>Bande de Bollinger (Bollinger Band)</h4>
+Bollinger Band (BBand), est une marge autour du prix d'une certaine crypto-monnaie, qui permet de voir 
+si elle est surachetée ou survendue.
+Breakout
+Le prix d'un actif se déplaçant en dessous de la zone de support ou au-dessus de son niveau de 
+résistance.
+<h4>BTD</h4>
+« Acheter la baisse » - utilisé comme un conseil pour acheter un actif pendant la baisse des prix.
+Bulle (Bubble)
+Une bulle crypto est un état dans lequel le prix de la crypto reste stable pendant longtemps avant que 
+son prix n'explose et n'augmente. Lorsque «l'éclatement» d'une bulle se produit, son prix commence à 
+baisser aussi rapidement qu'il a augmenté.
+<h4>Taureau (Bull)</h4>
+Contrairement à un ours, un taureau est un commerçant qui parie sur la hausse de la valeur 
+marchande. Un marché haussier est une période pendant laquelle le prix d'un actif augmente.
+<h4>Piège à taureau (Bull Trap)</h4>
+À l'opposé d'un piège à ours, il s'agit d'une situation dans laquelle le prix d'un actif augmente, incitant les 
+haussiers à l'acheter, puis commence à baisser.
+graphique des bougies/chandeliers (Candle/Candlestick Chart)
+C'est l'un des graphiques de prix les plus populaires qui montre le prix de la cryptographie le plus élevé, 
+le plus bas et les prix à l'ouverture et à la clôture de la transaction pendant une certaine période.
+<h4>Banque centrale (Central bank)</h4>
+Banque nationale qui applique la politique monétaire du pays, émet la monnaie fiduciaire nationale et 
+fournit des services bancaires au gouvernement et aux banques commerciales.
+<h4>Centralisé (Centralized)</h4>
+Organisation ou activité contrôlée et/ou gérée par une autorité centrale .
+<h4>Chiracrypto</h4>
+Un échange instantané de crypto-monnaie qui permet aux utilisateurs d'acheter, de vendre et 
+d'échanger rapidement des crypto-monnaies. Les utilisateurs peuvent acheter des actifs numériques 
+avec une carte bancaire (Visa, Mastercard), virement bancaire, Apple Pay.
+<h4>Fermer (Close)</h4>
+La fin d'une séance de bourse lorsque les marchés financiers ferment. Il a aussi une autre signification : la 
+conclusion d'un certain accord. <br>
+Une Crypto (Coin)
+Une crypto-monnaie qui fonctionne sur sa propre blockchain. <br>
+Cold Storage
+Un moyen de stocker votre crypto-monnaie hors ligne, généralement sur du matériel ou un portefeuille 
+papier. <br>
+<h4>Collatéral (Collateral)</h4>
+Un actif (dans le domaine des prêts cryptographiques, il s'agit généralement d'une autre cryptomonnaie) que l'emprunteur promet au prêteur en garantie qu'il remboursera le prêt.
+Heure de confirmation (Confirmation time)
+Le temps qui s'est écoulé entre le moment où une transaction a été soumise au réseau et le moment où 
+elle a été enregistrée dans un bloc confirmé sur la blockchain. <br>
+<h4>CPU (CPU)</h4>
+Unité centrale de traitement, un élément matériel qui permet à un ordinateur d'interagir avec toutes les 
+applications et tous les programmes qui y ont été installés. <br>
+Échange cryptographique (Crypto exchange)
+Un service qui offre aux clients une plate-forme pour le commerce, l'échange, l'achat ou la vente de 
+crypto-monnaies (chiracrypto)
+<h4>Cryptojacking</h4>
+Un type d'activité criminelle qui utilise l'ordinateur d'une personne pour générer de la crypto-monnaie à 
+son insu.
+Déposotaire, exchange dépositaire (Custody, custodial exchange)
+Le mot « dépositaire » signifie qu'un tiers détiendra un minimum de contrôle sur vos actifs ou vos 
+données. Les échanges de garde sont appelés ainsi car ils détiennent les clés privées de leurs utilisateurs.
+Rebond de chat mort (Dead Cat Bounce)
+Une petite et brève reprise du prix d'une crypto, suivie d'une nouvelle baisse.
+Décentralisation (Decentralization)
+Le transfert de contrôle d'une autorité centrale à plusieurs dépositaires différents.
+<h4>Application décentralisée (dApp)</h4>
+Une application numérique qui s'exécute sur un réseau blockchain et ne repose pas sur un seul 
+ordinateur. Les DApps sont libres du contrôle et de l'ingérence d'une autorité centrale .
+Organisation Autonome Décentralisée (DAO)
+Un système de règles qui définissent comment une organisation décentralisée doit fonctionner et 
+quelles actions elle doit entreprendre.
+<h4>Échange décentralisé (DEX)</h4>
+Un échange de crypto-monnaie qui permet des transactions peer-to-peer directes en ligne .
+Web profond, web sombre (Darknet)
+Pages Web qui ne peuvent pas être détectées ou identifiées par les moteurs de recherche.
+<h4>Frais de dépôt (Deposit Fee)</h4>
+Des frais que la plupart des échanges prélèvent lorsque vous déposez de la monnaie fiduciaire sur la 
+plateforme. Il peut s'agir soit d'une redevance fixe, soit dépendre de la somme en question.
+<h4>Tableau de profondeur (Depth Chart)</h4>
+Un affichage indiquant le nombre total d'ordres d'achat et de vente. Il est généralement divisé en deux, 
+ce qui permet d'afficher les ordres d'achat et de vente en même temps.
+<h4>Marché des dérivés (Derivatives Market)</h4>
+Un marché pour les dérivés financiers, comme les contrats à terme et les options.
+Portefeuille déterministe (Deterministic Wallet)
+C'est un portefeuille qui n'a besoin d'être sauvegardé qu'une seule fois . Il génère toutes vos clés et
+adresses et peut être récupéré à partir de la « graine ».
+<h4>Difficulté (Difficulty)</h4>
+Une mesure de la difficulté d'exploiter un seul bloc sur une blockchain particulière.
+Diversification (Diversification)
+Une stratégie d'investissement qui consiste à répartir ses fonds entre différents types d'actifs dans le but 
+de minimiser les risques et de maximiser les profits.
+<h4>Double-dépense (Double-spending )</h4>
+Une tentative réussie d'utiliser les mêmes crypto-monnaies pour plusieurs paiements à la fois.
+DYOR (Do your own research) (Faites vos propres recherches)
+L'une des principales règles de l'investissement crypto. Il rappelle aux investisseurs de ne pas faire 
+confiance aux conseils des autres et de toujours effectuer leurs propres recherches avant d'acheter ou 
+de vendre une crypto-monnaie.
+<h4>Attaque d'éclipse (Eclipse attack)</h4>
+Une attaque par éclipse vise à obscurcir la vue de la victime sur un réseau peer-to-peer.
+Chiffrement (Encryption)
+Le processus de conversion des données en code.
+<h4>ERC-20</h4>
+L'une des normes techniques Ethereum les plus populaires. Il est utilisé pour l'implémentation des jetons 
+et fournit une liste de règles que les jetons doivent suivre.
+<h4>ERC-721</h4>
+Une autre norme technique Ethereum. Les jetons ERC-721 sont classés comme NFT - jetons non 
+fongibles.
+<h4>ETF</h4>
+Un fonds négocié en bourse, un fonds d'investissement que les utilisateurs négocient sur des bourses et 
+des plateformes de négociation.
+Ethereum
+Ethereum est une blockchain open source décentralisée avec une fonctionnalité de contrats intelligents.
+<h4>Échange (Exchange)</h4>
+Une plate-forme qui vous permet d'échanger vos crypto-monnaies contre une autre monnaie crypto ou 
+fiduciaire.
+Monnaie fiduciaire (Fiat Currency)
+C'est une monnaie contrôlée par le gouvernement et déclarée légale par celui-ci, sans être adossée à une 
+marchandise. De bons exemples de fiat sont l'USD, l'EUR et la GBP.
+<h4>FOMO( fear of missing out) </h4>
+La peur de manquer quelque chose est un sentiment d'anxiété associé à l'inquiétude de manquer un 
+profit ou une expérience positive.
+Liquidation forcée (Forced liquidation)
+La liquidation est le processus de vente d'actifs contre de l'argent. La liquidation forcée fait référence à 
+des situations où cela se produit automatiquement si certaines conditions sont remplies. Par exemple, la 
+liquidation forcée se produit lorsqu'un commerçant est incapable de remplir les exigences de marge.
+<h4>FUD</h4>
+Négativité et panique propagées par quelqu'un qui veut en tirer profit (un FUDster).
+Analyse fondamentale (Fundamental analysis )
+Le processus de détermination de la valeur réelle d'un actif en utilisant toutes les informations 
+accessibles au public.
+Contrats à terme (Futures)
+Un contrat à terme , ou contrat à terme , est un accord d'achat ou de vente d'un actif à une certaine 
+date à un prix prédéterminé.
+<h4>Gaz (gas)</h4>
+Les frais qui doivent être payés pour exécuter avec succès une transaction ou un contrat sur la 
+blockchain Ethereum.
+Bloc de Genèse (Genesis block )
+Le premier bloc d'une blockchain.
+Être long/court (Going Long/Short )
+Going Long/ Short est une situation de trading sur marge qui se produit lorsque le trader profite de la 
+hausse/baisse du prix de la crypto.
+<h4>Gwei</h4>
+Gigawei, ou gwei en abrégé, équivaut à 1 000 000 000 wei. Wei est la plus petite unité d'Ethereum, et 1 
+gwei est égal à 0,000000001 ETH.
+Réduire de moitié (Halving)
+L'événement après lequel la récompense minière pour une crypto-monnaie particulière est réduite de 
+moitié. Cela réduit également de 50 % le taux d'extraction de la crypto-monnaie.
+<h4>Portefeuille matériel (Hardware Wallet)</h4>
+Un appareil qui peut stocker en toute sécurité la crypto -monnaie .
+Trading à haute fréquence (High-frequency trading)
+Une stratégie de trading algorithmique qui consiste à exécuter un grand nombre d'ordres par seconde
+HODL (
+Une stratégie de trading qui a pour origine une faute d'orthographe de "hold". Cela signifie simplement 
+conserver votre crypto sans la vendre.
+<h4>Portefeuille chaud(Hot Wallet)</h4>
+Un portefeuille accessible depuis Internet . Moins sécurisé que leurs homologues Cold Storage.
+<h4>Offre initiale de pièces (ICO)</h4>
+Une période de temps limitée pendant laquelle une quantité prédéterminée de crypto particulière est 
+vendue au public pour la première fois.
+<h4>Offre d'échange initiale (IEO)</h4>
+IEO est un ICO qui est géré et directement exploité par l'échange de crypto-monnaie.
+<h4>Introduction en bourse (IPO)</h4>
+Une offre publique dans laquelle les actions d'une société sont vendues en bourse pour la première fois.
+Interopérabilité (Interoperability)
+La capacité de différents programmes et logiciels à interagir les uns avec les autres et à échanger des 
+informations. <br>
+Système de fichiers interplanétaire (IPFS) InterPlanetary File System
+Un projet open-source ambitieux qui vise à construire un énorme système de fichiers peer-to-peer .
+<h4>Marge isolée (Isolated margin)</h4>
+Le solde de marge alloué à une position de marge particulière. La marge isolée aide les traders à gérer le 
+risque sur les positions séparément. <br>
+JOMO (Joy of missing out)
+'Joy of missing out', un concept de trading où les traders doivent parfois prendre un temps mort pour 
+évaluer soigneusement la situation, sans craindre de rater une bonne affaire.
+<h4>KYC (Know Your Client)</h4>
+« Connaissez votre client ». Une procédure lorsqu'une plateforme de trading ou une bourse vous 
+demanderait de confirmer votre identité pour que vous puissiez les utiliser.
+<h4>Latence (Latency)</h4>
+Un retard entre l'entrée et la sortie. En crypto, cela fait généralement référence au retard dans le 
+traitement des transactions par le réseau ou l'échange.
+<h4>Couche 2 (Layer 2)</h4>
+Un protocole ou un cadre secondaire qui a été construit au-dessus de la blockchain existante. Il s'agit 
+généralement d'une intégration tierce qui vise à accélérer le traitement des transactions et à résoudre 
+les problèmes d'évolutivité.
+<h4>Ledger ( registres)</h4>
+Un enregistrement de toutes les données de transaction. Les blockchains sont des registres.
+<h4>Lightning network</h4>
+Un protocole de paiement de couche 2 conçu pour accélérer les transactions sur les réseaux blockchain 
+comme Bitcoin ou Litecoin.
+<h4>Limit Order</h4>
+Une commande passée par un commerçant pour conclure une transaction lorsque le prix de la crypto 
+atteint un certain seuil.
+<h4>Liquidité (Liquidity )</h4>
+Une capacité de crypto à être vendue sans provoquer de changement de prix significatif, ni de perte de 
+valeur.
+<h4>Listing</h4>
+L'ajout d'un actif ou d'une paire d'actifs à un échange.
+<h4>MACD</h4>
+L'indicateur de convergence/divergence de la moyenne mobile. Il s'agit d'un indicateur technique utilisé 
+dans l'évaluation de l'analyse technique des prévisions et des fluctuations du marché de la cryptomonnaie.
+<h4>Réseau principal (Mainnet)</h4>
+Une blockchain indépendante qui gère son propre réseau avec son propre protocole et sa propre 
+technologie sous-jacente
+<h4>Logiciels malveillants (Malware)</h4>
+Les crypto-malwares permettent aux criminels d'exploiter la crypto-monnaie à l'aide de l'ordinateur de la 
+victime ou d'un autre appareil.
+Appel de marge (Margin Call)
+Qu'est-ce que l'appel de marge ? C'est une situation où un ou plusieurs titres du compte du trader sont 
+tombés en dessous d'un certain seuil, ce qui incite le trader à déposer plus d'argent ou à vendre certains 
+actifs.
+<h4>Marge de négociation (Margin Trading)</h4>
+Un type de trading , lorsque vous ajoutez un effet de levier à vos trades. Il fonctionne en empruntant de 
+l'argent pour augmenter votre pouvoir d'achat.
+Capitalisation boursière (Market Capitalization )
+Une valeur totale de la crypto-monnaie , calculée en multipliant le prix d'une seule pièce par le montant 
+total des pièces.
+<h4>Market maker</h4>
+Un trader qui fournit de la liquidité au marché en plaçant activement des ordres d'achat et de vente.
+Masternode
+Les masternodes nécessitent une garantie initiale pour fonctionner et jouer un rôle particulier dans la 
+gouvernance de la blockchain.
+<h4>ID mémo (Memo ID)</h4>
+Un chiffre unique ou une adresse supplémentaire utilisée par certaines crypto-monnaies (par exemple, 
+XLM, XRP) pour identifier le destinataire d'une transaction.
+Arbre Merkel (Merkle tree)
+Aussi connu sous le nom d'arbre de hachage, il s'agit d'une structure de données basée sur le hachage 
+qui peut coder efficacement et en toute sécurité les données de la blockchain.
+<h4>Mineur (Miner)</h4>
+Le terme «mineur» peut désigner à la fois la personne qui effectue l'extraction et l' appareil utilisé pour 
+extraire la crypto .
+<h4>Minnage (Mining)</h4>
+Le processus de résolution d'équations cryptographiques complexes pour vérifier les transactions et 
+ajouter de nouveaux blocs à la blockchain.
+<h4>Ferme minnage (Mining farm)</h4>
+Une collection de plusieurs ou plusieurs plates-formes minières.
+<h4>Mooning</h4>
+En termes de trading de crypto, le mooning signifie une augmentation rapide d'un prix de crypto pour 
+atteindre des sommets records.
+<h4>Multisignature</h4>
+Une façon de faire signer un seul document par plusieurs personnes. En crypto, cela fait généralement 
+référence à une exigence de sécurité supplémentaire de plusieurs clés pour la vérification de la 
+transaction.
+<h4>NFT (jeton non fongible)</h4>
+Contenu numérique unique non interchangeable qui est stocké sur un registre distribué (blockchain).
+<h4>Nœud (Node)</h4>
+Les nœuds communiquent entre eux pour exécuter diverses fonctions, telles que la validation de 
+nouveaux blocs et leur ajout à la blockchain.
+<h4>Nonce</h4>
+Une abréviation pour l'expression "numéro utilisé une seule fois". En crypto, cela fait référence au 
+nombre que les mineurs de blockchain recherchent et travaillent.
+<h4>Hors chaîne (Off-chain)</h4>
+Les transactions hors chaîne transfèrent de la valeur en dehors de la blockchain.
+<h4>Open/Close</h4>
+La position d'ouverture signifie que le commerçant est entré sur le marché et détient une certaine 
+quantité de crypto. Pour clôturer la position, un trader doit soit vendre soit acheter cette crypto, selon 
+qu'il en a choisi une fermée ou longue.
+<h4>OTC</h4>
+OTC, ou 'Over The Counter', est une négociation qui se déroule directement entre deux parties, sans 
+échange ni plate-forme de négociation.
+<h4>Paire (Pair)</h4>
+Le trading par paires est une stratégie lorsqu'un trader ouvre deux positions opposées sur des actifs liés, 
+pour s'assurer qu'il gagnera quoi qu'il arrive sur le marché.
+<h4>Portefeuille en papier (Paper Wallet)</h4>
+Un portefeuille qui est produit en imprimant directement les clés et les adresses sur le papier (d'où le 
+nom).
+<h4>Proof-of-stake</h4>
+PoS est un type d'algorithme de consensus qui récompense les validateurs en fonction de la quantité de 
+crypto qu'ils ont jalonnée.
+<h4>Proof-of-work</h4>
+PoW est un type d'algorithme de consensus qui récompense les validateurs en fonction de la quantité de 
+puissance de calcul qu'ils ont dépensée.
+<h4>Clé publique (Public key)</h4>
+Une clé cryptographique qui peut être utilisée par n'importe qui pour chiffrer les messages destinés à un 
+destinataire particulier. Le message crypté ne peut être déchiffré que par la personne qui détient la clé 
+privée.
+<h4>Pomper et vider(Pump and Dump )</h4>
+Une tactique consistant à gonfler le prix de l'altcoin en y intéressant davantage de personnes, suivie du 
+crash.
+<h4>La résistance (Resistance)</h4>
+Une certaine limite de prix que la crypto en question dépassera rarement, voire jamais.
+<h4>Feuille de route (Roadmap )</h4>
+Un plan de développement futur qui est généralement présenté sous une forme claire et concise. Les 
+feuilles de route sont souvent utilisées par les entreprises pour informer les investisseurs, les clients et 
+les utilisateurs de leurs plans et objectifs.
+<h4>ROI (Return on investment)</h4>
+Retour sur investissement, un pourcentage qui montre le montant des bénéfices réalisés par rapport à 
+l'investissement initial.
+<h4>Attaque de routage (Routing attack)</h4>
+Une attaque au niveau de la couche réseau qui implique que le ou les criminels modifient de manière 
+malveillante la table de routage du routeur de la victime.
+<h4>RSI</h4>
+Relative Strength Index, un moyen de déterminer si la crypto est survendue ou surachetée, vous 
+permettant de trouver les meilleurs points d'entrée et de sortie.
+<h4>Satoshi</h4>
+Satoshi est la plus petite unité de Bitcoin et est égal à 0,00000001 BTC.
+<h4>Satoshi Nakamoto</h4>
+Le créateur anonyme de Bitcoin.
+Commission des valeurs mobilières et des échanges (SEC)
+Agence fédérale chargée de réglementer et de maintenir le fonctionnement ordonné et équitable des 
+marchés des valeurs mobilières.
+Phrase de départ (Seed phrase)
+Les phrases de départ sont des collections de mots qui peuvent être utilisées pour accéder à son 
+portefeuille crypto.
+<h4>Segregated Witness (SegWit) (SegWit)</h4>
+Le processus d'augmentation de la limite de taille de bloc en excluant les données de signature des 
+détails des transactions.
+Sentiment
+Le sentiment est l'humeur générale et l'attitude des commerçants et des investisseurs à l'égard d'un actif 
+particulier ou de l'ensemble du marché.
+<h4>Sig/Signature</h4>
+Une clé d'authentification cryptée.
+Contrat intelligent (Smart contract)
+Un programme stocké sur une blockchain qui s'exécute lorsque certaines conditions prédéterminées 
+sont remplies.
+<h4>Snapshot</h4>
+Un enregistrement de l'état d'une blockchain à une hauteur de bloc particulière.
+Portefeuille logiciel (Software Wallet)
+Stockage pour crypto-monnaie qui fonctionne entièrement comme un programme sur l'ordinateur du 
+commerçant.
+<h4>Code source (Source code)</h4>
+Le code source est une collection de code écrit à l'aide d'un langage de programmation lisible par 
+l'homme. Il est chargé de définir les fonctionnalités d'un logiciel donné.
+Ecart (Spread )
+Une différence de prix entre le prix demandé et le prix de vente de l'actif.
+<h4>Stablecoin</h4>
+Une crypto-monnaie qui a été conçue pour avoir un prix stable. Les pièces stables sont généralement 
+rattachées à un autre actif, comme une monnaie fiduciaire (par exemple, l'USD).
+<h4>Ordre Stop Loss (Stop Loss Order )</h4>
+Il s'agit d'un ordre conçu pour limiter les pertes possibles en arrêtant le commerce lorsqu'il atteint un 
+certain niveau. Il peut être réglé sur n'importe quel seuil souhaité.
+Chaîne d'approvisionnement (Supply chain)
+Séquence de processus impliqués dans la production et la distribution d'un actif.
+<h4>Support</h4>
+À l'opposé de Resistance, c'est un seuil que le prix de la crypto ne descend pas en dessous.
+<h4>Preneur (Taker )</h4>
+Un commerçant qui passe une commande qui est exécutée immédiatement avant d'accéder au carnet 
+de commandes.
+<h4>Analyse technique (Technical Analysis )</h4>
+Une stratégie de trading qui évalue les investissements et le potentiel de trading des crypto-monnaies 
+sur la base des données statistiques.
+Penser à long terme(Think Long Term)
+C'est un conseil courant pour les commerçants, les incitant à investir davantage dans le commerce à long 
+terme, leur permettant d'obtenir plus de bénéfices plus tard, au lieu de quelques bénéfices maintenant.
+<h4>Jeton (Token)</h4>
+Une crypto-monnaie qui ne fonctionne pas sur sa propre blockchain et représente un actif ou un acte.
+Vente de jetons (Token sale )
+Également connue sous le nom d'offre initiale de pièces (ICO), une période de temps limitée pendant 
+laquelle une quantité prédéterminée d'actifs numériques est vendue au public pour la première fois.
+<h4>Frais de négociation (Trading Fee )</h4>
+Frais que vous payez pour une transaction en bourse ou sur une plateforme de trading.
+Terminal de négociation (Trading terminal )
+Logiciel fourni par la bourse qui permet aux traders de passer directement des ordres sans avoir à 
+contacter un courtier ou tout autre intermédiaire.
+<h4>Volume d'échanges (Trading Volume )</h4>
+Le nombre total de crypto a été échangé pendant une certaine période de temps.
+identifiant de transaction (Transaction ID )
+Une chaîne spéciale de caractères uniques qui représente chaque transaction qui a été vérifiée et 
+ajoutée à la blockchain. Il peut également être appelé un hachage de transaction.
+Transactions par seconde (TPS)
+Le nombre de transactions effectuées par seconde.
+<h4>TU</h4>
+Expérience utilisateur (UX)
+Le type de conception qui se concentre sur les interactions entre l'utilisateur et le produit, le système ou 
+le service.
+<h4>Interface utilisateur (UI)</h4>
+Un espace où se produisent toutes les interactions homme-ordinateur.
+Machine virtuelle (virtual machine)
+Une machine qui permet à l'ensemble du réseau de fonctionner comme un seul supercalculateur. Le rôle 
+principal de la machine virtuelle est d'assurer un environnement approprié pour l'exécution des contrats 
+intelligents.
+<h4>Volatilité ( Volatility)</h4>
+L'intensité des fluctuations de prix de la crypto, la devise est considérée comme volatile si son prix 
+change de manière significative au quotidien.
+<h4>Baleine ( Whale)</h4>
+Une personne qui détient suffisamment de crypto-monnaie pour pouvoir influencer de manière 
+significative sa dynamique de prix.
+<h4>Whiskers</h4>
+Les moustaches, ou mèches, sont des lignes verticales qui s'étendent au-dessus et au-dessous des cases 
+ou des barres sur les tableaux et les graphiques. Ils représentent les prix les plus bas et les plus hauts 
+atteints pour une période donnée.
+<h4>Liste blanche (Whitelist)</h4>
+Une fonction de sécurité qui permet les retraits cryptographiques uniquement vers les adresses de 
+crypto-monnaie jugées dignes de confiance par l'utilisateur.
+frais de retrait (Withdrawal Fee)
+Une commission que les bourses ou les plateformes de trading perçoivent lors du retrait d'argent du 
+dépôt.
+<h4>Bitcoin emballé (WBTC) Wrapped Bitcoin</h4>
+Une version compatible ERC-20 de Bitcoin. 1 WBTC peut être échangé contre 1 BTC et vice versa.
+Éther enveloppé (WETH) Wrapped Ether
+Une version compatible ERC-20 d'Ether. 1 WETH peut être échangé contre 1 ETH et vice versa.
+Preuve de connaissance zéro (Zero-Knowledge proof)
+Une méthode de validation d'une déclaration donnée sans donner aucune information à son sujet autre 
+que le fait qu'elle est vraie
+  </p>
+</div>
+{% endblock %}
+
+{% block script %}
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+{% endblock %}

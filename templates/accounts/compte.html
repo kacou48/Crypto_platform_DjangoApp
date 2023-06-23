@@ -1,0 +1,150 @@
+{% extends 'core/base.html' %}
+
+{% block head_title %}chira-compte{% endblock %}
+
+
+
+
+{% block content %}
+
+ 
+<div id="app">
+  <section class="home">
+        <table id="customers">
+          <tr>
+            <th>total de points</th>
+            <th>gain</th>
+            <th>lien d'affiliation</th>
+          </tr>
+          <tr>
+            <td>{{my_recs}}</td>
+            <td>...$</td>
+            <td><input v-on:focus="$event.target.select()"  ref="myinput" readonly :value="[[ url ]]"><button class="btn" @click="copy" style="margin-left: 1rem;">Copier</button></td>
+          </tr>
+        </table>
+  </section>
+
+  <div id="compte-section" class="">  
+    <div>
+        <div class="status">
+            <p>Consulter <span class="text-info">"info de transaction"</span> pour verifier votre status de transaction dans le cas d'echange.</p>
+            <p>Qui est soit: <strong>en attente</strong>, <strong>a echoué</strong> ou <strong>complete.</strong></p>
+            <p>En cas de complete, effectuer le retrait à partir de votre address wallet.</p>
+            <p>Dans le cas contraire vous patientez si: <strong>"status = waiting"</strong> ou que vous n'avez pas envoyé les fonds.</p>
+
+            <button v-on:click="status_info_exchange()" class="btn">Info sur l'echange</button>    
+        </div>
+        
+        <div style="display:flex; gap:2rem;margin-top: 5rem;flex-direction: column;">
+
+            <table id="customers">
+              <tr>
+                <th>status</th>
+                <th>Details</th>
+                <th>payingAddress</th>
+              </tr>
+              <tr>
+                <td>[[ status ]]</td>
+                <td>[[ status_details ]]</td>
+                <td v-if="exchangeD">[[ payinAddress ]]</td>
+              </tr>
+            </table>
+
+            <table id="customers">
+              <tr>
+                <th>ID</th>
+                <th>SendAmount</th>
+                <th>ReceiveAmount</th>
+                <th>createdAt</th>
+              </tr>
+              <tr>
+                <td>[[ status ]]</td>
+                <td v-if="exchangeD">[[expectedSendAmount ]]</td>
+                <td v-if="exchangeD">[[ expectedReceiveAmount ]]</td>
+                <td>[[ createdAt ]]</td>
+              </tr>
+            </table>
+            
+        </div> 
+    </div>
+ 
+  </div>
+</div>
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+
+{% block script %}
+
+<script type="text/javascript">
+    
+    var info = '{{ info.cle_id }}';
+    var url = '{{ url }}';
+    //console.log(info)
+
+    const app = new Vue ({
+        el: '#app',
+        delimiters: ['[[', ']]'],
+        data () {
+            return {
+                id: info,
+                url: url,
+                status: null,
+                payinAddress: null,
+                payoutAddress: null,
+                createdAt: null,
+                expectedSendAmount: null,
+                expectedReceiveAmount : null,
+                status_details: null,
+
+                x_api_key: x_api_key,
+
+                
+                continuer: false,
+                exchangeD: false,
+
+            }
+        }, 
+        methods: {
+            copy() {
+              this.$refs.myinput.focus();
+              document.execCommand('copy');
+            },
+        
+            status_info_exchange: function(){
+                
+                var requestOptions = {
+                  method: 'GET',
+                  redirect: 'follow'
+                };
+
+               fetch("https://api.changenow.io/v1/transactions/" + this.id + this.api_key, requestOptions)
+               
+               .then(response => response.json())
+               .then(result =>{
+                 console.log(result);
+                 if (result.error) {
+                    alert(result.message);
+                 }else{
+                    this.status = result['status'];
+                    this.expectedSendAmount = result['expectedSendAmount'];
+                    this.expectedReceiveAmount = result['expectedReceiveAmount'];
+                    this.createdAt = result['createdAt'];
+                    this.isPartner = result['isPartner'];
+                    this.exchangeD = true;
+                    this.continuer = true;
+                 }
+                 
+                 
+               })
+               .catch(error =>{
+                 console.log('error',error);
+               })
+
+            },
+        },
+
+     });
+</script>
+{% endblock %}

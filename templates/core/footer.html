@@ -1,0 +1,51 @@
+{% load static %}
+<footer style="border-top: 1px solid #000;margin-top: 30px;">
+    <div class="row_fouter">
+        <div class="colf">
+            <img src="{% static 'images/logoc.png' %}" class="logo">
+            <p>Chiracrypto est un “Exchange” de crypto-monnaies instantané et non-custodial (nous n’avons pas de 
+             contrôle sur vos cryptos) , offrant un accès à des centaines de crypto-monnaies que les utilisateurs 
+             peuvent échanger , acheter et vendre aux meilleurs taux du marché via leurs cartes prepayées Visa/ 
+             Mastercard.. 
+            Notre objectif est de rendre le processus d'échange, d’achat et de vente de crypto sans effort pour  tous 
+            ceux qui souhaitent investir dans la crypto-monnaie avec un temps de transaction d’à peine quelques 
+            minutes .</p>
+        </div>
+        <div class="colf">
+            <h3>Bureau <div class="underline"><span></span></div></h3>
+            <p>II-Plateau</p>
+            <p>Cocody Abidjan</p>
+            <p>Cote D'Ivoire</p>
+            <p class="email-id">commercial@chiracrypto.com</p>
+            <h4 style="font-size:1.3rem;">+225-01 51 17 79 17</h4>
+        </div>
+        <div class="colf">
+            <h3>Liens <div class="underline"><span></span></div></h3>
+            <ul>
+                <li><a href="{% url 'home' %}">accueil</a></li>
+                <li><a href="{% url 'accounts:blog' %}">Blog</a></li>
+                <li><a href="{% url 'core:policy' %}">Condition d'utilisation</a></li>
+                
+            </ul>
+        </div>
+        <div class="colf">
+            <h3>Retrouvez nous sur <div class="underline"><span></span></div></h3>
+            <!--form>
+                <i class="far fa-envelope"></i>
+                <input type="email" placeholder="Enter your email id" required>
+                <button type="submit"><i class="fas fa-arrow-right"></i></button>
+            </form-->
+            <div class="social-icons">
+                <a href="https://web.facebook.com/chiracrypto"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/chiracrypto"><i class="fab fa-twitter"></i></a>
+                <a href="http://t.me/Chiracrypto"><i class="fab fa-telegram"></i></a>
+                <i class="fab fa-whatsapp"></i>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <p class="copyright">
+        &copy; copyright @ {% now "SHORT_DATETIME_FORMAT" %}  par <span>EDIFICE FINTECH SARL</span>
+    </p>
+</footer>
+

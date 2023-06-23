@@ -1,0 +1,693 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block head_title %}Crypto Monnaie{% endblock %}
+
+{% block content %}
+
+<!-- home section start -->
+<section class="home"id="fiatApp">
+    <div class="rows">
+        <div class="content">
+            <h3>ECHANGEZ, ACHETEZ & <!--br class="titre1"-->VENDEZ VOS <span>Crypto.</span></h3>
+            <p class="par">Rapide et securité garantie. Inscrivez vous et commencez.</p>
+        </div>
+        <div class="form">
+            
+            <div class="lesBoutton" v-if="step1">
+                <button class="btn butt" v-on:click="trans_choixE()" :class="{active: buttE}">Echange</button>
+                <button class="btn butt" v-on:click="trans_choixA()" :class="{active: buttA}">Achat</button>
+                <!--button class="btn">Vente</button-->
+            </div>
+            <div class="formInt" :class="{hiddenP: achat}">
+                <div class="montant">
+                    <label>Montant: </label>
+                    <input type="number" step="0.01" min="0" v-model="amountFait">
+                </div>
+                <p>
+                    <!--button v-on:click="rateFiat()">+</button-->
+                    <span v-if="essai[0]" v-for="elm in essai[0]" style="gap:1rem;">
+                    <strong>[[ elm['identifier'] ]]:</strong>taux ~ [[ elm['receivedCrypto'] ]] <span v-if="elm['available']"> [[ selectedCrypto ]]</span> | <span>[[ elm['duration']['message'] ]]</span>
+                    </span>
+                    <span v-if="essai[1]" style="color:red;font-size: 1.8rem;"><span>montant minimum </span>[[ essai[1] ]]</span>
+                    
+                </p>
+                <div class="choixDevises">
+                    <div v-on:click="wrapper()" class="wrapper" v-bind:class="{ active: isActive}">
+                        <div class="select-btn">
+                            <span>[[selectedFiat]]</span>
+                            <i class="fas fa-angle-down"></i>
+                        </div>
+                        <div class="content">
+                            <!--div class="search">
+                                <i class="fas fa-search"></i>
+                                <input type="text" placeholder="recherche">    
+                            </div-->
+                            <ul class="options">
+                                <li v-for="option in fiatCurrencies"  @click="takeFiat(option)">
+                                   [[ option ]]
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <span style="font-size:2rem;font-family: bold;">&#x2192;</span>
+                    <div v-on:click="wrapperC()" class="wrapper wrapperright" v-bind:class="{ open: isActiveC}">
+                        <div class="select-btn">
+                            <span>[[selectedCrypto]]</span>
+                            <i class="fas fa-angle-down"></i>
+                        </div>
+                        <div class="content">
+                            <!--div class="search">
+                                <i class="fas fa-search"></i>
+                                <input type="text" placeholder="recherche">    
+                            </div-->
+                            <ul class="options">
+                                <li v-for="option in cryptoCurrencies"  @click="takeCurrencie(option)">
+                                   [[ option ]]
+                                </li>
+                            </ul>
+                        </div>
+                    </div>    
+                </div>
+
+                <div class="payement">
+                    <h3>Methode de payement</h3>
+                    <select v-model="selectedPay">
+                      <option v-for="elm in paymentMethods">
+                        [[ elm ]]
+                      </option>
+                    </select>
+                </div>
+
+                <div class="leTaux">
+                    <div style="display: flex;gap:1rem;">
+                        <h3>Choisissez le meilleur taux</h3>
+                        <select v-model="selectedRate" style="font-size:1.3rem;">
+                          <option v-for="option in rateList">
+                            [[ option['identifier'] ]]
+                          </option>
+                        </select>
+                    </div>
+                    
+                </div>
+                
+                 <button v-on:click="stepVewA()" class="btn btn1">Achetez</button> 
+                
+                 <!--button v-on:click="seConnecter()" class="btn btn1">Achetez</button-->
+                
+            </div>
+
+            <div class="formInt" :class="{hiddenP: echange}">
+                <div class="montant">
+                    <label>Montant: </label>
+                    <input type="number" step="0.01" min="0" v-model="amountEx">
+                </div>
+                <p>
+                    <!--button v-on:click="rateStandard()">+</button-->
+                    <span style="gap:1rem;">
+                    <strong> Taux variable </strong> ≈ <span v-if="tauxS[1]"> [[ tauxS[1] ]] <span> [[selectedTo]]</span></span>
+                    <span style="color:red;font-size: 1.5rem;" v-if="tauxS[0]">[[ tauxS[0] ]]</span><br>
+
+                    <strong>Taux fixe </strong> ≈ <span v-if="tauxF[1]"> [[ tauxF[1] ]] <span>  [[selectedTo]]</span></span>
+                    <!--span style="color:red;font-size: 1.5rem;" v-if="tauxF[0]">[[ tauxF[0] ]]</span-->
+                    </span>
+                    </p> 
+
+                
+                <div class="choixDevises">
+                    <div v-on:click="wrapperFrom()" class="wrapper" v-bind:class="{ active: isActive}">
+                        <div class="select-btn">
+                            <span>[[selectedFrom]]</span>
+                            <i class="fas fa-angle-down"></i>
+                        </div>
+                        <div class="content">
+                            <ul class="options">
+                                {% if data_list_current %}
+                                   {% for obj in data_list_current %}
+                                    <li @click="takeFrom('{{ obj.ticker|upper }}')"> {{ obj.ticker|upper }}</li>
+                                    
+                                    {% endfor %}
+                                {% else %}
+                                   <li>rien ici...</li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                    <span style="font-size:2rem;font-family: bold;">&#x2192;</span>
+                    <div v-on:click="wrapperTo()" class="wrapper wrapperright" v-bind:class="{ open: isActiveC}">
+                        <div class="select-btn">
+                            <span>[[selectedTo]]</span>
+                            <i class="fas fa-angle-down"></i>
+                        </div>
+                        <div class="content">
+                            <ul class="options">
+                                {% if data_list_current %}
+                                   {% for obj in data_list_current %}
+                                    <li @click="takeTo('{{ obj.ticker|upper }}')"> {{ obj.ticker|upper }}</li>
+                                    
+                                    {% endfor %}
+                                {% else %}
+                                   <li>rien ici...</li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>    
+                </div>
+
+                <div class="leTaux">
+                    <div style="display: flex;gap:1rem;">
+                        <h3>Choisissez le meilleur taux</h3>
+                        <select v-model="selectedRateEx" style="font-size:1.3rem;">
+                          <option>Taux variable</option>
+                          <option>Taux fixe</option>
+                        </select>
+                    </div>
+                    
+                </div>
+                
+                <button v-on:click="stepVewE()" class="btn btn1">Echanger</button>
+                
+                <!--button v-on:click="seConnecter()" class="btn btn1">Echanger</button-->
+                
+            </div>
+            
+
+            <div class="relais" v-if="stepE">
+                <span v-on:click="retourE()">&#x2190;</span>
+                <div class="forma">
+                    <input type="" name="" placeholder="address wallet" v-model="address">
+                    <button v-on:click="exchange()" class="btn" style="margin-top: 1rem;margin-bottom: 1rem; cursor: pointer;">suivant</button>    
+                </div>     
+            </div>
+
+            <div v-if="afterSend" class="finale">     
+                <div>
+                    <p class="">Envoyer les fonds que vous souhaitez échanger à l’adresse de dépôt:<!--span> [[ payinAddress ]]</span--> <input v-on:focus="$event.target.select()"  ref="myinput" readonly :value="[[ payinAddress ]]"><button class="btn" @click="copy">Copier</button> (dans votre cas, vous devez envoyer des pièces [[ selectedFrom ]]).</p>
+                    <p>Un dépôt doit être effectué dans un certain délai (20 minutes), sinon l’échange n’aura pas lieu</p>
+                    <p><span>Important! </span> Une fois les fonds sont envoyés, cliquez sur le bouton en bas.</p>
+                </div>
+               
+                <div>
+                    <button class="btn" v-on:click="pageInfo()"><strong>J'ai fini</strong></button>
+                </div>     
+            </div>
+
+            <div class="relais" v-if="stepA">
+                <span v-on:click="retourA()">&#x2190;</span>
+                <div class="forma">
+                    <input type="" name="" placeholder="address wallet" v-model="cryptocurrencyAddress">
+                    <input type="" name="" placeholder="email" v-model="email">
+                    <button v-on:click="achatFiat()" class="btn" style="margin-top: 1rem;margin-bottom: 1rem; cursor: pointer;">suivant</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- home section end -->
+
+<!-- count section start -->
+<section class="count">
+    <div class="box-container">
+        <div class="box">
+            <i class="fa-solid fa-credit-card"></i>
+            <div class="content">
+                <h3>Lorem unpsi de</h3>
+                <p>diolor sit amet consecteur adipisicing diolor sit amet consecteur adipisicing</p>
+            </div>
+        </div>
+        <div class="box">
+            <i class="fa-solid fa-coins"></i>
+            <div class="content">
+                <h3>Lorem unpsi de</h3>
+                <p>diolor sit amet consecteur adipisicing diolor sit amet consecteur adipisicing</p>
+            </div>
+        </div>
+        <div class="box">
+            <!--i class="fas fa-face-smile"></i--><i class="fa-solid fa-sack-dollar"></i>
+            <div class="content">
+                <h3>Lorem unpsi de</h3>
+                <p>diolor sit amet consecteur adipisicing diolor sit amet consecteur adipisicing</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- count section end -->
+
+<!-- about section start -->
+<section class="about" id="about">
+    <div class="row">
+        <div class="images">
+            <img src="{% static 'images/bitcoins.jpg' %}" alt="">
+        </div>
+        <div class="content">
+            <h3>Why choose us?</h3>
+            <p>Lorem ipsuom diolor sit amet consecteur adipisicing elit. Cumque quibusdan magni error, aut enin rerum
+            Lorem ipsuom diolor sit amet consecteur adipisicing elit. Cumque quibusdan magni error, aut enin rerum Lorem ipsuom diolor sit amet consecteur adipisicing elit. Cumque quibusdan magni error, aut enin rerum</p>
+            <a href="{% url 'accounts:user_registration' %}" class="btn">Commencer</a>
+        </div>
+    </div>
+</section>
+<!-- about section end -->
+
+
+
+
+    
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+
+    var fiatApp = new Vue({
+        el: '#fiatApp',
+        delimiters: ['[[', ']]'],
+        data () {
+            return {
+                buttA: false,
+                buttE: true,
+                achat: true,
+                echange: false,
+                step1: true,
+                stepA: false,
+                stepE: false,
+                isActive: false,
+                isActiveC: false,
+                amountFait: 100,
+                selectedFiat: 'USD',
+                selectedCrypto: 'BTC',
+                selectedRate: 'Mercuryo',
+                rateErrorM: '',
+                cryptoCurrencies: [],
+                fiatCurrencies: [],
+                paymentMethods: [],
+                rateList: [],
+                urlFiat: {},
+                limite: [],
+                leMin: null,
+                selectedPay: 'creditCard',
+                cryptocurrencyAddress: null, 
+                email: null,
+                api_key: api_key,
+                api_keyFiat: api_keyFiat,
+                x_api_key: x_api_key,
+                csrftoken: csrftoken,
+
+                amountEx: 0.1,
+                selectedFrom: 'BTC',
+                selectedTo: 'ETH',
+                selectedRateEx: 'Taux variable',
+                estimateStandard: null,
+                estimateFlow: null,
+                errorS: null,
+                errorF: null,
+                rateId: null,
+                id: null,
+                payinAddress: null,
+                address: null,
+                afterSend: false,
+            }
+        },
+        
+        mounted() {
+            console.log('it work');
+            //this.essai();
+            this.listCurrencies();
+            this.trans_choixA();
+
+        },
+        computed: {
+            essai: function(){
+                this.rateFiat();
+                return [this.rateList, this.leMin];
+            },
+            tauxS: function(){
+                this.rateStandard();
+                return [this.errorS, this.estimateStandard];
+            },
+            tauxF: function(){
+                this.rateFlow();
+                return [this.errorF, this.estimateFlow];
+            },
+
+        },
+        methods: {
+            copy() {
+              this.$refs.myinput.focus();
+              document.execCommand('copy');
+            },
+            seConnecter() {
+                alert('connectez vous avant de poursuivre!!');
+            },
+
+            wrapper: function(){
+                this.isActive = !this.isActive;
+            },
+            wrapperC: function(){
+                this.isActiveC = !this.isActiveC;
+            },
+            trans_choixA: function(){
+               this.buttA = !this.buttA;
+               this.buttE = !this.buttE; 
+
+               this.achat = !this.achat;
+               this.echange = !this.echange; 
+            },
+            trans_choixE: function(){
+               this.buttA = !this.buttA;
+               this.buttE = !this.buttE; 
+
+               this.achat = !this.achat;
+               this.echange = !this.echange;
+            },
+            stepVewE: function(){
+                this.echange = !this.echange;
+                this.stepE = true;
+                this.step1 = false;          
+            },
+            stepVewA: function(){
+                this.achat = !this.achat;
+                this.stepA = true;
+                this.step1 = false;               
+            },
+            retourE: function(){
+                 this.echange = !this.echange;
+                this.stepE = false;
+                this.step1 = true;
+            },
+            retourA: function(){
+                this.achat = !this.achat;
+                this.stepA = false;
+                this.step1 = true;
+            },
+            myMin: function(myarr){
+                var al = myarr.length;
+                minimum = myarr[al-1];
+                while (al--){
+                    if(myarr[al] < minimum){
+                        minimum = myarr[al]
+                    }
+                }
+                return minimum;
+            },
+
+            listCurrencies: function() {
+                console.log('hello world!!');
+                var myHeaders = new Headers();
+                myHeaders.append("Authorization", 'Basic ' + this.api_keyFiat);
+                
+                var requestOptions = {
+                  method: 'GET',
+                  headers: myHeaders,
+                  redirect: 'follow'
+                };
+                var url = 'https://onramper.tech/gateways';
+                //var url = 'https://onramper.tech/rate/EUR/BTC/creditCard/100';
+
+                fetch(url, requestOptions)
+                 .then(response => response.json())
+                 .then(result =>{
+                    //console.log(result);
+                    //console.log(result['gateways'][0]['paymentMethods']);
+                    //console.log(result['gateways'][0]['cryptoCurrencies']);
+                    //console.log(result['gateways'][0]['fiatCurrencies']);
+                    //console.log(result['gateways'][0]['fiatCurrencies'][0]);
+
+                    for(var i=0; i< result['gateways'][0]['cryptoCurrencies'].length; i++){
+                        this.cryptoCurrencies.push(result['gateways'][0]['cryptoCurrencies'][i]['id']);
+                    }
+
+                    for(var i=0; i< result['gateways'][0]['fiatCurrencies'].length; i++){
+                        this.fiatCurrencies.push(result['gateways'][0]['fiatCurrencies'][i]['id']);
+                    }
+                    this.paymentMethods = result['gateways'][0]['paymentMethods'];     
+                  })
+                 .catch(error => console.log('error', error));
+            },
+        
+            rateFiat() {
+                var myHeaders = new Headers();
+                myHeaders.append("Authorization", 'Basic ' + this.api_keyFiat);
+
+                var requestOptions = {
+                  method: 'GET',
+                  headers: myHeaders,
+                  redirect: 'follow'
+                };
+                var url = 'https://onramper.tech/rate/'+this.selectedFiat+ '/' +this.selectedCrypto+ '/' +this.selectedPay+ '/' +this.amountFait;
+
+                fetch(url, requestOptions)
+                 .then(response => response.json())
+                 .then(result =>{
+                    console.log(result);
+                    //this.rateErrorM = '';
+                    this.leMin = null;
+                    this.limite = [];
+                    this.rateList = [];
+                    this.urlFiat = {}; 
+                    for (var i=0; i< result.length; i++){
+                        if(result[i]['error']){
+                            this.limite.push(result[i]['error']['limit']);
+                        }
+                        else{
+                            this.rateList.push(result[i]);
+                            this.urlFiat[result[i]['identifier']] = result[i]['nextStep']['url'];
+                        }
+                    }
+                    //console.log('taux ' ,this.rateList);
+                    //console.log('la liste', this.limite);
+                    console.log('le min: ', this.myMin(this.limite));
+                    
+                    if (this.rateList.length === 0) {   
+                        this.leMin = this.myMin(this.limite);
+                    } 
+                    
+                 })
+                 .catch(error => console.log('error', error));
+
+            },
+            achatFiat: function(){
+                var myHeaders = new Headers();
+                myHeaders.append("Content-Type", "application/json");
+                myHeaders.append("Authorization", 'Basic ' + this.api_keyFiat);
+                var url = this.urlFiat[this.selectedRate];
+
+                var raw = JSON.stringify({
+                  "email": this.email,
+                  "cryptocurrencyAddress": this.cryptocurrencyAddress,
+                });
+
+                var requestOptions = {
+                  method: 'POST',
+                  headers: myHeaders,
+                  body: raw,
+                  redirect: 'follow'
+              };
+              fetch(url, requestOptions)
+              .then(response => response.json())
+              .then(result =>{
+                //console.log(result);
+                if (result['message']) {
+                  alert(result['message']);
+                }else{
+                    //this.redirectFiat = result['url'];
+                   window.location.replace(result['url']);
+                }
+                 
+              })
+              .catch(error =>{
+                console.log('error', error);   
+             });
+                
+            },
+            takeCurrencie: function(elm) {
+                this.selectedCrypto = elm;
+            },
+            takeFiat: function(elm) {
+                this.selectedFiat = elm;
+            },
+
+
+            /*les methodes d'echange */
+            wrapperFrom: function(){
+                this.isActive = !this.isActive;
+            },
+            wrapperTo: function(){
+                this.isActiveC = !this.isActiveC;
+            },
+
+            takeFrom: function(elm) {
+                this.selectedFrom = elm;
+            },
+            takeTo: function(elm) {
+                this.selectedTo = elm;
+            },
+            pageInfo: function(){
+                var url = "/accounts/mon-compte/";
+                window.location.replace(url);
+
+            },
+
+
+            rateStandard: function(){
+                //console.log(this.amount, this.from);
+                var url_extimate_exchange = "https://api.changenow.io/v1/exchange-amount/" + this.amountEx +"/" + this.selectedFrom +"_" + this.selectedTo + "/?api_key=" + this.api_key ;
+
+                var requestOptions = {
+                  method: 'GET',
+                  redirect: 'follow'
+                };
+
+                fetch(url_extimate_exchange, requestOptions)
+                  .then(response => response.json())
+                  .then(result => {
+                    console.log(result);
+                    if (result.error) {
+                     this.errorS = result.message;
+                     this.estimateStandard = null;
+                     this.estimateFlow = null;
+                 }else{
+                    console.log(result['estimatedAmount']);
+                    this.estimateStandard = result['estimatedAmount'];
+                    this.errorS = null;
+                    
+                 }
+                    
+                }) 
+                .catch(error => {
+                  console.log('error', error);
+        
+                })
+            },
+
+            rateFlow: function(){
+                
+                var requestOptions = {
+                  method: 'GET',
+                  redirect: 'follow'
+               };
+
+              fetch("https://api.changenow.io/v1/exchange-amount/fixed-rate/" +this.amountEx +"/" + this.selectedFrom+ "_"+ this.selectedTo +"?api_key=" + this.api_key + "&useRateId=true", requestOptions)
+              .then(response => response.json())
+              .then(result =>{
+                 console.log(result);
+                 if (result.error) {
+                    this.errorF =  result.message;
+                 }else{
+                   this.estimateFlow = result['estimatedAmount'];
+                   this.rateId = result['rateId'] ;
+                   //this.continuer = true;
+                 }
+
+              })
+              .catch(error => console.log('error', error))
+               
+            },
+
+
+            exchange: function(){
+                console.log('itwor!');
+
+                var myHeaders = new Headers();
+                myHeaders.append("Content-Type", "application/json");
+
+                if(this.selectedRateEx === 'Taux variable'){
+                    console.log('itwor!mmoo');
+                    var raw = JSON.stringify({
+                      "from": this.selectedFrom.toLowerCase(),
+                      "to": this.selectedTo.toLowerCase(),
+                      "address": this.address,
+                      "amount": this.amountEx,
+                    });
+                }
+
+                if(this.selectedRateEx === 'Taux fixe'){
+                    var raw = JSON.stringify({
+                      "from": this.selectedFrom.toLowerCase(),
+                      "to": this.selectedTo.toLowerCase(),
+                      "address": this.address,
+                      "amount": this.amountEx,
+                      "rateId": this.rateId,
+                    });
+                }
+
+                var requestOptions = {
+                  method: 'POST',
+                  headers: myHeaders,
+                  body: raw,
+                  redirect: 'follow'
+                };
+                var url = "https://api.changenow.io/v1/transactions/" + this.api_key;
+
+                fetch(url, requestOptions)
+                  .then(response => response.json())
+                  .then(result =>{
+                    console.log(result);
+                    
+                    if (result.error) {
+                        alert(result.message);
+                    }else{
+                        this.id = result['id'];
+                        this.payinAddress = result['payinAddress'];
+                        this.afterSend = true;
+                        this.stepE = false;
+                        this.step1 = false;
+                        this.submitInfo();
+                        
+                    }
+                  })
+                  .catch(error =>{
+                      console.log('error', error);   
+                  })
+            },
+
+            submitInfo: function(){
+                //console.log(this.csrftoken);
+                if (this.payinAddress) {
+
+                    var userFormData = {
+                    'id':this.id,
+                    'payinAddress':this.payinAddress,
+                   };
+                }else{
+
+                   var userFormData = {
+                    'id':this.id,
+                    'payinAddress':'pas de payinAddress',
+                   }; 
+                }
+
+                var myHeaders = new Headers();
+                myHeaders.append("Content-Type", "application/json");
+                //myHeaders.append("Accept", "application/json");
+                myHeaders.append('X-CSRFToken', this.csrftoken);
+
+                var raw = JSON.stringify({
+                  'form': userFormData,  
+              });
+
+                var requestOptions = {
+                  method: 'POST',
+                  headers: myHeaders,
+                  credentials: 'same-origin',
+                  body: raw,
+                 
+              };
+
+                var url = '/accounts/process_transaction/';
+
+                fetch(url, requestOptions)
+                
+                .then((response) => response.json()) //la reponse se trouve dans data
+                .then((data) => {
+                    console.log('Success:', data);
+                
+                })   
+
+            },
+
+            
+        },
+    });
+</script>
+{% endblock %}
+

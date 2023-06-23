@@ -1,0 +1,134 @@
+{% extends 'core/base.html' %}
+
+{% block head_title %}chira-register{% endblock %}
+
+
+
+
+{% block content %}
+
+
+<div class="contInscri">
+
+
+{% if registration_form.non_field_errors %}
+
+   {% for error in registration_form.non_field_errors %}
+    <div class="">
+        <p>Error!</p>
+        <p>{{ error }}</p>
+    </div>
+    {% endfor %}
+
+{% endif %}
+
+
+
+<div class="containerform">
+	<div class="titre">Inscription</div>
+	<form method="post">
+	 	{% csrf_token %}
+        {% for hidden_field in registration_form.hidden_fields %}
+            {{ hidden_field.errors }}
+            {{ hidden_field }}
+        {% endfor %}
+
+        <div class="user-detail">
+            <div class="input-box">
+	        	<label class="" for="{{ registration_form.first_name.id_for_label }}">
+	        		<h2>{{ registration_form.first_name.label }}</h2>
+	        	</label>
+	        	<span>{{ registration_form.first_name }}
+	        	{% if registration_form.first_name.errors %}
+	                {% for error in registration_form.first_name.errors %}
+	                    <p class="">{{ error }}</p>
+	                {% endfor %}
+	            {% endif %}
+	            </span>
+            </div>
+
+            <div class="input-box">
+	        	<label class="" for="{{ registration_form.last_name.id_for_label }}">
+	        		<h2>{{ registration_form.last_name.label }}</h2>
+	        	</label>
+	        	<span>{{ registration_form.last_name }}
+	        	{% if registration_form.last_name.errors %}
+	                {% for error in registration_form.last_name.errors %}
+	                    <p class="">{{ error }}</p>
+	                {% endfor %}
+	            {% endif %}
+	            </span>
+            </div>
+
+            <div class="input-box">
+	        	<label class="" for="{{ registration_form.email.id_for_label }}">
+	        		<h2>{{ registration_form.email.label }}</h2>
+	        	</label>
+	        	<span>{{ registration_form.email }}
+	        	{% if registration_form.email.errors %}
+	                {% for error in registration_form.email.errors %}
+	                    <p class="">{{ error }}</p>
+	                {% endfor %}
+	            {% endif %}
+	            </span>
+            </div>
+
+            <div class="input-box">
+	        	<label class="" for="{{ registration_form.password1.id_for_label }}">
+	        		<h2>{{ registration_form.password1.label }}</h2>
+	        	</label>
+	        	<span>{{ registration_form.password1 }}
+	        	{% if registration_form.password1.errors %}
+	                {% for error in registration_form.password1.errors %}
+	                    <p class="">{{ error }}</p>
+	                {% endfor %}
+	            {% endif %}
+	            </span>
+            </div>
+
+            <div class="input-box">
+	        	<label class="" for="{{ registration_form.password2.id_for_label }}">
+	        		<h2>{{ registration_form.password2.label }}</h2>
+	        	</label>
+	        	<span>{{ registration_form.password2 }}
+	        	{% if registration_form.password2.errors %}
+	                {% for error in registration_form.password2.errors %}
+	                    <p class="">{{ error }}</p>
+	                {% endfor %}
+	            {% endif %}
+	            </span>
+            </div>
+
+            <div class="input-box coche">
+				<div class="checkbox-content">
+					<label for="{{ registration_form.accepter.id_for_label }}" class="text">
+						<h2>{{ registration_form.accepter.label }}</h2>
+
+					</label>
+					<a style="font-size:1.5rem;" href="{% url 'core:policy' %}" class="text"> les conditions de confidentialités</a>
+				</div>
+				<span>{{ registration_form.accepter }}
+	        	{% if registration_form.accepter.errors %}
+	                {% for error in registration_form.accepter.errors %}
+	                    <p class="">{{ error }}</p>
+	                {% endfor %}
+	            {% endif %}
+	            </span>		
+			</div>
+
+        </div>
+        <div class="butt">
+            <button class="" type="submit" style="cursor: pointer;">
+                Envoyez
+            </button>
+        </div>
+	</form>
+</div>
+	
+</div>
+
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+
