@@ -2,6 +2,7 @@
 This project allows users to buy and exchange crypto-currencies. An application for selling/buying crypto-currencies. By integrating APIs from Guadarian and Changenow.
 
 NOTE/ viewing the project requires a wifi connection, as it contains VueJS links.
+And  you have to insert your api keys in the code ( in js file)
 
 # TO LAUCH A DJANGO PROJECT LOCALLY FROM THE TERMINAL, YOU CAN THESE STEPES.
 1 Open a terminal or command prompt.
